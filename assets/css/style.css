@@ -1,0 +1,14 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 31/12/2017, 13:08:02
+    Author     : joaopaulo
+*/
+
+.bd-navbar {background-color: #563d7c;box-shadow: 0 0.5rem 1rem rgba(0,0,0,.05), inset 0 -1px 0 rgba(0,0,0,.1);}
+.bd-navbar .navbar-brand{color:#FFF;}
+.bd-navbar .nav-link{color:#FFF;}
+.bd-navbar .nav-link:hover{color:#ccc;}

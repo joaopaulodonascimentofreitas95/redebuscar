@@ -1,0 +1,123 @@
+/*!
+ * Start Bootstrap - Modern Business (https://startbootstrap.com/template-overviews/modern-business)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-logomodern-business-nav/blob/master/LICENSE)
+ */
+
+body {
+  padding-top: 74px;
+}
+
+
+.slick-prev {
+    left: 50px;
+}
+
+.slick-next {
+    right: 50px;
+}
+
+
+.slick-prev, .slick-next,
+.slick-prev:active, .slick-next:active{
+    background:rgba(0,0,0,0.6)!important;
+    z-index:30;
+    
+    padding:10px 10px;
+    font-size:1.8em;
+    width: 40px;
+    height: auto;
+    border-radius:50%;
+    position:absolute;
+}
+
+
+.slick-prev:hover, .slick-next:hover{
+    background-color:#25375C!important;
+}
+
+.single-item2 img, 
+.slick-slide img{
+    width:100%;
+    max-width:100%;
+}
+
+
+.produtos_slide .slick-prev{
+        left:-25px;
+    }
+
+    .produtos_slide .slick-next{
+        right:-25px;
+    }
+
+@media(max-width:720px){
+
+    .produtos_slide .slick-prev,
+    .produtos_slide .slick-next{
+        display:none;
+    }
+
+}
+
+
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 76px;
+  }
+}
+
+
+.carousel-item {
+  height: auto;
+  min-height: 300px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+
+.carousel-inner{
+    overflow:none!important;
+    display:block;
+}
+
+@media(min-width:720px){
+    .carousel-item-65 {
+        height: 65vh;
+        min-height: 300px;
+        background: no-repeat center center scroll;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+    
+    #myCarousel{
+    max-width:70%;
+    margin:0 auto 30px auto;
+}
+
+
+}
+
+@media(min-width:960px){
+
+    .carousel-item {
+        height: 65vh;
+        min-height: 300px;
+        background: no-repeat center center scroll;
+        -webkit-background-size: auto;
+        -moz-background-size: autor;
+        -o-background-size: auto;
+        background-size: auto;
+    }
+    
+}
+
+.portfolio-item {
+  margin-bottom: 30px;
+}
