@@ -115,6 +115,17 @@ define("BUS_C_PHONE_B","");
 define("BUS_C_EMAIL","center.ar@centerar.com.br");
 
 
+/*
+     * E-MAIL SERVER
+     * Consulte estes dados com o serviço de hospedagem
+     */
+define('MAIL_HOST', ''); //Servidor de e-mail ex.: mail.dominio.com.br
+define('MAIL_PORT', ''); //Porta de envio ex.: 25
+define('MAIL_USER', ''); //E-mail de envio ex.: contato@inforstorm.com.br
+define('MAIL_PASS', ''); //Senha do e-mail de envio ex.: 12345
+define('MAIL_SENDER', 'Grupo BusCar Autopeças'); //Nome do remetente de e-mail ex.: Inforstorm Desenvolvimento web
+define('MAIL_TESTER', ''); //E-mail de testes (DEV) ex.: jpgjoaopaulo95@hotmail.com
+
 
 define("ADMIN_NAME", "Dashboard");
 /*
@@ -193,27 +204,26 @@ define('ECOMMERCE_PAY_SPLIT_NUM', 12); //Qual o número máximo de parcelas? (co
 define('ECOMMERCE_PAY_SPLIT_ACM', 2.99); //Juros aplicados ao mês! (consultar método de pagamento)
 define('ECOMMERCE_PAY_SPLIT_ACN', 1); //Parcelas sem Juros (consultar método de pagamento)
 
-
 //CLIENTE
 
 /*
      * SHIP CONFIG
      * DADOS DO SEU CLIENTE/DONO DO SITE
      */
-    define('SITE_ADDR_NAME', 'Work Control Pro Painel'); //Nome de remetente
-    define('SITE_ADDR_RS', 'Work Control'); //Razão Social
-    define('SITE_ADDR_EMAIL', ''); //E-mail de contato
-    define('SITE_ADDR_SITE', ''); //URL descrita
-    define('SITE_ADDR_CNPJ', '00.000.000/0000-00'); //CNPJ da empresa
-    define('SITE_ADDR_IE', '000/0000000'); //Inscrição estadual da empresa
-    define('SITE_ADDR_PHONE_A', ''); //Telefone 1
-    define('SITE_ADDR_PHONE_B', ''); //Telefone 2
-    define('SITE_ADDR_ADDR', ''); //ENDEREÇO: rua, número (complemento)
-    define('SITE_ADDR_CITY', ''); //ENDEREÇO: cidade
-    define('SITE_ADDR_DISTRICT', ''); //ENDEREÇO: bairro
-    define('SITE_ADDR_UF', ''); //ENDEREÇO: UF do estado
-    define('SITE_ADDR_ZIP', ''); //ENDEREÇO: CEP
-    define('SITE_ADDR_COUNTRY', ''); //ENDEREÇO: País
+define('SITE_ADDR_NAME', 'BusCar Autopeças'); //Nome de remetente
+define('SITE_ADDR_RS', 'BusCar'); //Razão Social
+define('SITE_ADDR_EMAIL', 'contato@redebuscar.com.br'); //E-mail de contato
+define('SITE_ADDR_SITE', ''); //URL descrita
+define('SITE_ADDR_CNPJ', '00.000.000/0000-00'); //CNPJ da empresa
+define('SITE_ADDR_IE', '000/0000000'); //Inscrição estadual da empresa
+define('SITE_ADDR_PHONE_A', '85 3046 1100'); //Telefone 1
+define('SITE_ADDR_PHONE_B', '85 9.9199.5058'); //Telefone 2
+define('SITE_ADDR_ADDR', ''); //ENDEREÇO: rua, número (complemento)
+define('SITE_ADDR_CITY', ''); //ENDEREÇO: cidade
+define('SITE_ADDR_DISTRICT', ''); //ENDEREÇO: bairro
+define('SITE_ADDR_UF', ''); //ENDEREÇO: UF do estado
+define('SITE_ADDR_ZIP', ''); //ENDEREÇO: CEP
+define('SITE_ADDR_COUNTRY', ''); //ENDEREÇO: País
 
 
     /**

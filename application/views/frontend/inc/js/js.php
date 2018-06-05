@@ -1,6 +1,5 @@
 <!--SCRIPTS-->
 <!-- Bootstrap core JavaScript -->
-<script src="<?=base_url("vendor/jquery/jquery.min.js");?>"></script>
 <script src="<?=base_url("vendor/bootstrap/js/bootstrap.bundle.min.js");?>"></script>
 <script src="<?=base_url("vendor/jquery-easing/jquery.easing.min.js");?>"></script>
 <script src="<?=base_url("assets/slick/slick.min.js");?>"></script>
@@ -12,7 +11,6 @@
             $('.single-item').slick({
                 autoplay: true
             });
-            
             $('.empresa_slide').slick({
                 arrows: false,
                 autoplay: true
@@ -54,10 +52,10 @@
                 }
                 ]
             });
-            
-       
-    });
-        
+        });
+
+
+
     </script>
 </body>
 </html>

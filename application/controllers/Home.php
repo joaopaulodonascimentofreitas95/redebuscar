@@ -168,4 +168,78 @@ class Home extends CI_Controller {
         return $metadata;
     }
 
+
+
+    public function ajaxContact(){
+        $Ajax = array();
+
+        $this->load->model("Emailsend_model", "mail_model");
+        //Inicia o processo de configuração para o envio do email
+        $config['protocol'] = 'smtp'; // define o protocolo utilizado
+        $config['smtp_host'] = MAIL_HOST; //Endereço do servidor SMTP
+        $config['smtp_user'] = MAIL_USER; //Usuário do SMTP
+        $config['smtp_pass'] = MAIL_PASS; //Senha do SMTP
+        $config['smtp_port'] = MAIL_PORT; //Porta do SMTP | valor padrão: 25
+        $config['smtp_crypto'] = 'ssl';
+        $config['mailtype'] = 'html';
+        $config['charset'] = 'utf-8';
+        $config['newline'] = "\r\n";
+        $config['wordwrap'] = TRUE; // define se haverá quebra de palavra no texto
+        $config['validate'] = TRUE; // define se haverá validação dos endereços de email
+
+        //Recupera os dados do formulário
+        $dados = $this->input->post();
+
+        $MailContent = '<table width="550" style="font-family: "Trebuchet MS", sans-serif;">';
+        $MailContent .= '<tr>';
+        $MailContent .= '<td>';
+        $MailContent .= '<font face="Trebuchet MS" size="3">#mail_body#</font>';
+        $MailContent .= '<p style="font-size: 0.875em;">';
+        $MailContent .= '<img src="' . base_url('admin/_img/mail.jpg') . '" alt="Atenciosamente ' . SITE_NAME . '" title="Atenciosamente '. SITE_NAME . '" />';
+        $MailContent .= '<br><br>' . SITE_ADDR_NAME . '';
+        $MailContent .= '<br>Telefone: ' . SITE_ADDR_PHONE_A . '';
+        $MailContent .= '<br>E-mail: ' . SITE_ADDR_EMAIL . '';
+        $MailContent .= '<br><br>';
+        $MailContent .= '<a title="' . SITE_NAME . '" href="' . base_url() . '">' . SITE_ADDR_SITE . '</a>';
+        $MailContent .= '<br>' . SITE_ADDR_ADDR . '';
+        $MailContent .= '<br>' . SITE_ADDR_CITY . '/' . SITE_ADDR_UF . ' - ' . SITE_ADDR_ZIP . '<br>' . SITE_ADDR_COUNTRY . '';
+        $MailContent .= '</p>';
+        $MailContent .= '</td>';
+        $MailContent .= '</tr>';
+        $MailContent .= '</table>';
+        $MailContent .= '<style>body, img{max-width: 550px !important; height: auto !important;} p{margin-botton: 15px 0 !important;}</style>';
+
+        $this->mail_model->sendEmailToClient($config, $MailContent, $dados);
+
+        //  Se enviar a mensagem de confirmação de envio da mensagem do usuário
+        $SendToAdmin = $this->mail_model->sendEmailToAdmin($config, $MailContent, $dados);
+        if($SendToAdmin):
+            $Ajax["wc_send_mail"] = "<div class='alert alert-success'><strong>Tudo Certo {$dados['user_name']}!</strong> Sua mensagem foi enviada com sucesso e, em breve estaremos respondendo:).</div>";
+        else:
+            $Ajax["wc_contact_error"] = "<div class='alert alert-info'><strong>Oppsss!</strong> desculpe, mas, não conseguimos enviar sua mensagem. Você pode enviar um email para ".SITE_ADDR_EMAIL."</div>";
+        endif;
+
+        echo json_encode($Ajax);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

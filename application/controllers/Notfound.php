@@ -26,16 +26,15 @@ class Notfound extends CI_Controller {
         $this->Data["services"] = $this->modelfrontend->readServices(["service_title !=" => null]);
         $this->Data["pdt_categories"] = $this->modelfrontend->readPdtCategories(["cat_title !=" => null, "cat_parent !=" => null]);
 
-        $this->load->view("front/inc/header", $SEO);
-        $this->load->view("front/inc/css/css");
-        $this->load->view("front/inc/navbar", $this->Data);
-        $this->load->view("front/404");
-        $this->load->view("front/inc/brand_address");
-        $this->load->view("front/inc/contact");
-        $this->load->view("front/inc/footer");
-        $this->load->view("front/inc/js/js");
+        $this->load->view("frontend/inc/header", $SEO);
+        $this->load->view("frontend/inc/css/css");
+        $this->load->view("frontend/inc/navbar", $this->Data);
+        $this->load->view("frontend/404");
+        $this->load->view("frontend/inc/brand_address");
+        $this->load->view("frontend/inc/contact");
+        $this->load->view("frontend/inc/footer");
+        $this->load->view("frontend/inc/js/js");
     }
-
     private function getSeo() {
         $metadata = [
             "schema" => $this->modelseo->getSchema(),

@@ -37,6 +37,24 @@ img{max-width: 100%;}
 .flex_col{flex-basis: 10%; padding: 10px;}
 .img_brand{max-width: 60px;}
 
+.navbar-brand{
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand-phones{
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 20px;
+}
+
+.navbar-brand-phones span{
+    color:#1A3A5B!important;
+    flex-basis: 100%;
+    font-size: 0.8em;
+    font-weight: 700;
+}
+
 
 .section{padding: 40px 0;}
 .section_header{margin-bottom: 40px;}
@@ -103,4 +121,44 @@ section#contact :-ms-input-placeholder{font-weight:700;color:#ced4da;font-family
 
 @media (max-width: 992px){
     .bio_img{margin-top: 30px;}
+}
+
+@media(max-width:800px){
+
+    .navbar-brand-phones span{
+        flex-basis: 48%;
+        font-size: 0.7em;
+    }
+}
+
+@media(max-width:500px){
+
+    .navbar-brand{
+        display: inline-block;
+    }
+    .navbar-brand-phones{
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        padding-left: 0px;
+    }
+
+    .navbar-brand-phones span{
+        flex-basis: 48%;
+        font-size: 0.5em;
+    }
+    .navbar-brand-phones span:before{
+        content: " / ";
+    }
+
+    .navbar-brand-phones span:first-of-type:before{
+        content:"";
+    }
+
+}
+
+
+.img_load{
+    max-width:40px;
+    display: none;
 }

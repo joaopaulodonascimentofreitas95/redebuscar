@@ -35,3 +35,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <meta property="twitter:url" content="<?= $base; ?>" />           
 
         <link rel="shortcut icon" href="<?= base_url("images/favicon.png"); ?>"/>
+        <script src="<?=base_url("vendor/jquery/jquery.js");?>"></script>

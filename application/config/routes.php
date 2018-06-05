@@ -84,3 +84,5 @@ $route["(:any)"] = "home/page/$1";
 $route["produtos/(:any)"] = "home/produtos/$1";
 $route["produto/(:any)"] = "home/produto/$1";
 $route["marca/(:any)"] = "home/marca/$1";
+
+$route["ajax/sendcontact"] = "home/ajaxcontact";

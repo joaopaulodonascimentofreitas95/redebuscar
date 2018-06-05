@@ -32,7 +32,7 @@
             <div class="row">
                 <article class="address_box col-md-4">
                     <div class="text-center" style="display:block; width:100%;">
-                        <img style="max-width:200px;" src="<?=base_url("assets/images/buscar.png");?>" alt="Buscar Autopeças" title="Buscar Autopeças">
+                        <img style="max-width:200px;" src="<?=base_url("assets/images/buscar-refrigeracao.png");?>" alt="Buscar Autopeças" title="Buscar Autopeças">
                     </div>
                     
                     <h2 class="my-4 text-uppercase text_blue_buscar"><i class="fa fa-map-marker text_red_buscar"></i> <?=BUS_A_NAME;?></h2>
