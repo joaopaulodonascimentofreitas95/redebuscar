@@ -1,5 +1,4 @@
 ﻿<?php
-
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*
@@ -116,16 +115,16 @@ define("BUS_C_EMAIL","center.ar@centerar.com.br");
 
 
 /*
-     * E-MAIL SERVER
-     * Consulte estes dados com o serviço de hospedagem
-     */
-define('MAIL_HOST', ''); //Servidor de e-mail ex.: mail.dominio.com.br
-define('MAIL_PORT', ''); //Porta de envio ex.: 25
-define('MAIL_USER', ''); //E-mail de envio ex.: contato@inforstorm.com.br
-define('MAIL_PASS', ''); //Senha do e-mail de envio ex.: 12345
+* E-MAIL SERVER
+* Consulte estes dados com o serviço de hospedagem
+*/
+define('MAIL_HOST', 'smtp.gmail.com'); //Servidor de e-mail ex.: mail.dominio.com.br
+define('MAIL_PORT', '465'); //Porta de envio ex.: 25
+define('MAIL_USER', 'contatossitens@gmail.com'); //E-mail de envio ex.: contato@inforstorm.com.br
+define('MAIL_PASS', '<bHW6-9cXYPH>{Xa'); //Senha do e-mail de envio ex.: 12345
 define('MAIL_SENDER', 'Grupo BusCar Autopeças'); //Nome do remetente de e-mail ex.: Inforstorm Desenvolvimento web
 define('MAIL_TESTER', ''); //E-mail de testes (DEV) ex.: jpgjoaopaulo95@hotmail.com
-
+define('MAIL_CRYPTO', 'ssl'); // ssl, tls
 
 define("ADMIN_NAME", "Dashboard");
 /*

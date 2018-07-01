@@ -1,29 +1,21 @@
 <?php
-
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 class Home extends CI_Controller {
-
     private $Data = array();
     private $getUrl;
     private $SeoPach;
-
     public function __construct() {
         parent::__construct();
         $this->load->model("Front_model", "modelfrontend");
         $this->load->model("Seo_model", "modelseo");
-
         $this->getUrl = uri_string();
         $setURL = (empty($this->getUrl) ? "index" : $this->getUrl );
         $this->SeoPach = $setURL;
         $this->modelseo->seo($this->SeoPach);
-
-
         $this->Data["brands"] = $this->modelfrontend->readBrands(["brand_title !=" => null]);
         $this->Data["menu_categories"] = $this->modelfrontend->readPdtCategories(["cat_title !=" => null, "cat_parent" => null]);
         $this->Data["menu_brands"] = $this->modelfrontend->readPdtBrands(["brand_title !=" => null]);
     }
-
     public function index() {
         $SEO = $this->getSeo();
 
@@ -40,12 +32,9 @@ class Home extends CI_Controller {
         $this->load->view("frontend/inc/footer");
         $this->load->view("frontend/inc/js/js");
     }
-    
-    
     public function servicos() {
         $SEO = $this->getSeo();
-        $this->Data["services"] = $this->modelfrontend->readServices(["service_title !=" => null]);
-        
+        $this->Data["services"] = $this->modelfrontend->readServices(["service_title !=" => null]);    
         $this->load->view("frontend/inc/header", $SEO);
         $this->load->view("frontend/inc/css/css");
         $this->load->view("frontend/inc/navbar", $this->Data);
@@ -55,7 +44,6 @@ class Home extends CI_Controller {
         $this->load->view("frontend/inc/footer");
         $this->load->view("frontend/inc/js/js");
     }
-
     public function page($page_name) {
         $this->Data["page"] = $this->modelfrontend->readPages(["page_name" => $page_name, "page_status" => 1]);
         if (empty($this->Data["page"])):
@@ -71,9 +59,7 @@ class Home extends CI_Controller {
         $this->load->view("frontend/inc/footer");
         $this->load->view("frontend/inc/js/js");
     }
-
     public function marca($brand_name) {
-
         $this->Data["pdtbrands"] = $this->modelfrontend->readPdtBrands(["brand_title !=" => null]);
         $this->Data["pdtcategories"] = $this->modelfrontend->readPdtCategories(["cat_title !=" => null]);
         $this->Data["pdtbrand"] = $this->modelfrontend->readPdtBrands(["brand_name" => $brand_name])[0];
@@ -81,11 +67,8 @@ class Home extends CI_Controller {
             redirect("404");
         endif;
         $SEO = $this->getSeo();
-
-
         $Where = "pdt_brand = {$this->Data["pdtbrand"]["brand_id"]} AND (pdt_inventory >= 1 OR pdt_inventory IS NULL) AND (pdt_status = 1) ORDER BY pdt_title ASC";
         $this->Data["products"] = $this->modelfrontend->readPdtByBrands($Where);
-
         $this->load->view("frontend/inc/header", $SEO);
         $this->load->view("frontend/inc/css/css");
         $this->load->view("frontend/inc/navbar", $this->Data);
@@ -97,24 +80,19 @@ class Home extends CI_Controller {
     }
 
     public function produtos($cat_name) {
-
         $this->Data["pdtcategories"] = $this->modelfrontend->readPdtCategories(["cat_title !=" => null]);
         $this->Data["pdtbrands"] = $this->modelfrontend->readPdtBrands(["brand_title !=" => null]);
         $this->Data["pdtcategory"] = $this->modelfrontend->readPdtCategories(["cat_name" => $cat_name])[0];
-
         if (empty($this->Data["pdtcategory"])):
             redirect("404");
         endif;
         $SEO = $this->getSeo();
-
         if ($this->Data["pdtcategory"]["cat_parent"]):
             $readDepartament = $this->modelfrontend->readPdtCategories(["cat_id" => $this->Data["pdtcategory"]["cat_parent"]], "cat_title, cat_name");
             $this->Data["departament"] = "<a title='{$readDepartament[0]['cat_title']} em " . SITE_NAME . "' href='" . site_url("produtos/{$readDepartament[0]['cat_name']}") . "'>{$readDepartament[0]['cat_title']}</a>";
         endif;
-
         $WHERE = "(pdt_category = {$this->Data["pdtcategory"]["cat_id"]} OR pdt_subcategory = {$this->Data["pdtcategory"]["cat_id"]}) AND (pdt_inventory >= 1 OR pdt_inventory IS NULL) AND (pdt_status = 1) ORDER BY pdt_title ASC";
         $this->Data["products"] = $this->modelfrontend->readPdtByCategories($WHERE);
-
         $this->load->view("frontend/inc/header", $SEO);
         $this->load->view("frontend/inc/css/css");
         $this->load->view("frontend/inc/navbar", $this->Data);
@@ -124,7 +102,6 @@ class Home extends CI_Controller {
         $this->load->view("frontend/inc/footer");
         $this->load->view("frontend/inc/js/js");
     }
-
     public function produto($pdt_name) {
         $readPdt = $this->modelfrontend->readProduct($pdt_name, 1)[0];
         if (empty($readPdt)):
@@ -135,8 +112,6 @@ class Home extends CI_Controller {
             //  Atualiza Número de Views do Produto
             $PdtViewUpdate = ['pdt_views' => $readPdt["pdt_views"] + 1, 'pdt_lastview' => date('Y-m-d H:i:s')];
             $this->modelfrontend->ExeUpdate(DB_PDT, $PdtViewUpdate, ["pdt_id" => $readPdt["pdt_id"]]);
-
-
             $this->Data["product"] = $readPdt;
             $this->load->view("frontend/inc/header", $SEO);
             $this->load->view("frontend/inc/css/css");
@@ -148,8 +123,6 @@ class Home extends CI_Controller {
             $this->load->view("frontend/inc/js/js");
         endif;
     }
-    
-
     /*
      * Responsável por retornar array com metadados seo
      */
@@ -167,12 +140,8 @@ class Home extends CI_Controller {
         ];
         return $metadata;
     }
-
-
-
     public function ajaxContact(){
         $Ajax = array();
-
         $this->load->model("Emailsend_model", "mail_model");
         //Inicia o processo de configuração para o envio do email
         $config['protocol'] = 'smtp'; // define o protocolo utilizado
@@ -180,16 +149,14 @@ class Home extends CI_Controller {
         $config['smtp_user'] = MAIL_USER; //Usuário do SMTP
         $config['smtp_pass'] = MAIL_PASS; //Senha do SMTP
         $config['smtp_port'] = MAIL_PORT; //Porta do SMTP | valor padrão: 25
-        $config['smtp_crypto'] = 'ssl';
+        $config['smtp_crypto'] = MAIL_CRYPTO;
         $config['mailtype'] = 'html';
         $config['charset'] = 'utf-8';
         $config['newline'] = "\r\n";
         $config['wordwrap'] = TRUE; // define se haverá quebra de palavra no texto
         $config['validate'] = TRUE; // define se haverá validação dos endereços de email
-
         //Recupera os dados do formulário
         $dados = $this->input->post();
-
         $MailContent = '<table width="550" style="font-family: "Trebuchet MS", sans-serif;">';
         $MailContent .= '<tr>';
         $MailContent .= '<td>';
@@ -208,9 +175,7 @@ class Home extends CI_Controller {
         $MailContent .= '</tr>';
         $MailContent .= '</table>';
         $MailContent .= '<style>body, img{max-width: 550px !important; height: auto !important;} p{margin-botton: 15px 0 !important;}</style>';
-
         $this->mail_model->sendEmailToClient($config, $MailContent, $dados);
-
         //  Se enviar a mensagem de confirmação de envio da mensagem do usuário
         $SendToAdmin = $this->mail_model->sendEmailToAdmin($config, $MailContent, $dados);
         if($SendToAdmin):
@@ -218,28 +183,6 @@ class Home extends CI_Controller {
         else:
             $Ajax["wc_contact_error"] = "<div class='alert alert-info'><strong>Oppsss!</strong> desculpe, mas, não conseguimos enviar sua mensagem. Você pode enviar um email para ".SITE_ADDR_EMAIL."</div>";
         endif;
-
         echo json_encode($Ajax);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

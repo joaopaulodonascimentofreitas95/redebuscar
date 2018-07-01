@@ -1,3 +1,6 @@
+<?php
+//echo phpinfo();
+?>
 <!--SLIDES-->
 <article>
     <header>
